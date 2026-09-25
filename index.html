@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +8,7 @@
   </head>
   <body class="bg-surface text-base text-ink-2 antialiased">
     <header class="border-b border-line bg-surface">
-      <div class="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
         <a
           href="#top"
           class="flex items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chop"
@@ -16,7 +16,19 @@
           <img src="/logo.svg" alt="" class="h-8 w-8" />
           <span class="text-lg font-semibold tracking-tight text-ink">Chop Chop</span>
         </a>
-        <nav class="flex flex-wrap items-center gap-x-6 gap-y-2" aria-label="Primary">
+        <button
+          type="button"
+          id="menu-open"
+          class="rounded-lg border border-line p-2 text-ink transition duration-200 hover:-translate-y-0.5 hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chop sm:hidden"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="sr-only">Open menu</span>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+        <nav class="hidden flex-wrap items-center gap-x-6 gap-y-2 sm:flex" aria-label="Primary">
           <a
             href="#how-it-works"
             class="border-b-2 border-transparent text-sm text-ink-2 transition duration-200 hover:-translate-y-0.5 hover:border-chop hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chop"
@@ -40,6 +52,56 @@
         </nav>
       </div>
     </header>
+
+    <dialog
+      id="mobile-menu"
+      class="m-0 h-dvh w-full max-w-none border-0 bg-transparent p-0 backdrop:bg-transparent sm:hidden"
+      aria-label="Menu"
+    >
+      <div class="ml-10 flex h-full flex-col bg-surface px-5 py-4">
+        <div class="flex items-center justify-between">
+          <a
+            href="#top"
+            class="flex items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chop"
+          >
+            <img src="/logo.svg" alt="" class="h-8 w-8" />
+            <span class="text-lg font-semibold tracking-tight text-ink">Chop Chop</span>
+          </a>
+          <button
+            type="button"
+            data-close
+            class="rounded-lg border border-line p-2 text-ink transition duration-200 hover:-translate-y-0.5 hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chop"
+          >
+            <span class="sr-only">Close menu</span>
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" d="M6 6l12 12M18 6 6 18" />
+            </svg>
+          </button>
+        </div>
+        <nav class="mt-12 grid gap-8 px-6" aria-label="Mobile">
+          <a
+            href="#how-it-works"
+            class="text-ink-3 transition duration-200 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chop"
+            >How it works</a
+          >
+          <a
+            href="#popular"
+            class="text-ink-3 transition duration-200 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chop"
+            >Popular</a
+          >
+          <a
+            href="#where"
+            class="text-ink-3 transition duration-200 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chop"
+            >Areas</a
+          >
+        </nav>
+        <a
+          href="#get-the-app"
+          class="mt-auto mb-8 self-end rounded-lg bg-chop px-4 py-2 text-sm font-semibold text-surface transition duration-200 hover:-translate-y-0.5 hover:bg-chop-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chop"
+          >Get the app</a
+        >
+      </div>
+    </dialog>
 
     <main id="top">
       <section class="bg-cream">

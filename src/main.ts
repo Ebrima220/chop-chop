@@ -83,3 +83,27 @@ const areaRoot = document.querySelector<HTMLElement>("#areas");
 
 if (dishRoot) renderDishes(dishRoot);
 if (areaRoot) renderAreas(areaRoot);
+
+const menu = document.querySelector<HTMLDialogElement>("#mobile-menu");
+const menuOpen = document.querySelector<HTMLButtonElement>("#menu-open");
+
+function setMenuOpen(open: boolean): void {
+  if (!menu || !menuOpen) return;
+  if (open) menu.showModal();
+  else menu.close();
+  menuOpen.setAttribute("aria-expanded", String(open));
+}
+
+menuOpen?.addEventListener("click", () => setMenuOpen(true));
+menu?.addEventListener("close", () => menuOpen?.setAttribute("aria-expanded", "false"));
+menu?.addEventListener("click", (event) => {
+  if (event.target === menu) menu.close();
+});
+menu?.querySelector("[data-close]")?.addEventListener("click", () => menu?.close());
+menu?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => menu?.close());
+});
+
+window.matchMedia("(min-width: 40rem)").addEventListener("change", (event) => {
+  if (event.matches) menu?.close();
+});
