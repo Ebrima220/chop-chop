@@ -24,11 +24,19 @@ npm run preview
 Follow `style-guide.md`. In short:
 
 - Fifteen named colours only, after `--color-*: initial` in `@theme`. `chop` is the button fill, `chop-dark` is orange text on light backgrounds, and `chop-light` is orange text on the dark bands.
-- Mobile first. Unprefixed classes are the phone layout. `sm:` (40rem) turns the header, steps, cards, areas, and footer into rows or two columns. `lg:` (64rem) puts the hero side by side, raises the heading to `text-5xl`, and makes the card and area grids three columns.
+- Mobile first. Unprefixed classes are the phone layout. `sm:` (40rem) shows the header links and turns the steps, cards, areas, and footer into rows or two columns. `lg:` (64rem) puts the hero side by side, raises the heading to `text-5xl`, and makes the card and area grids three columns.
 - Headings, buttons, prices, step numbers, and badges are `font-semibold`. Nothing on the page is `font-bold`. There are no shadows.
 - Hover and keyboard focus are specified in the style guide. Footer links change colour and do not move.
 
 Add buttons are visual only. This handoff is a landing page, not a cart. Footer items with no page in the handoff (Join as a kitchen, Rates with us, Contact, Terms) are styled links with `href="#"`.
+
+## Navigation
+
+The page uses smooth scrolling. `scroll-smooth` is on the `<html>` element, so links to `#how-it-works`, `#popular`, `#where`, `#get-the-app`, and `#top` ease to the section instead of jumping.
+
+Below `sm`, the header is the logo and a hamburger button (`#menu-open`). The button opens `#mobile-menu`, a dialog that leaves a strip of the page visible on the left. Inside it: the logo, a close button, How it works, Popular, Areas, and Get the app at the bottom right. Choosing a link or the close button dismisses the menu. Escape does the same. Widening the window past `40rem` closes it. `src/main.ts` owns that behaviour.
+
+From `sm` upward the hamburger is hidden and the header shows the links in a row, as in the desktop comp.
 
 ## Repository
 
